@@ -1,0 +1,21 @@
+services:
+  api:
+    build:
+      context: ./api
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 3G
+    environment:
+      NODE_ENV: "production"
+      TZ: "America/Sao_Paulo"
+      #
+      HASURA_HTTPS: "https://hs.ibor.com.br/v1/graphql"
+      HASURA_ADMIN_SECRET: "${HASURA_ADMIN_SECRET}"
+      #
+      MSSQL_HOST: "192.168.2.24"
+      MSSQL_PORT: "1433"
+      MSSQL_USER: "${MSSQL_USER}"
+      MSSQL_PASSWORD: "${MSSQL_PASSWORD}"

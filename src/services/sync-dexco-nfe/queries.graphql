@@ -1,0 +1,7 @@
+# ----------------------------------------------------------------------
+
+mutation InsertNfes($data: [cte_nfe_insert_input!]!) {
+  insert_cte_nfe(objects: $data) {
+    affected_rows
+  }
+}

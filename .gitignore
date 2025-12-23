@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+.git/
+.npmrc
+.DS_Store
+out/

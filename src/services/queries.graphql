@@ -1,0 +1,7 @@
+# ----------------------------------------------------------------------
+
+mutation InsertSyncJob($data: cte_sync_job_insert_input!) {
+  insert_cte_sync_job_one(object: $data) {
+    uuid
+  }
+}
