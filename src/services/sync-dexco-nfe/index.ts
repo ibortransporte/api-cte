@@ -31,19 +31,16 @@ export const syncDexcoNfes = async () => {
   try {
     // fetch new data
     const cargoData = await fetchData({ user });
-    console.log(cargoData);
 
     if (!cargoData.length) {
       console.info(`[Fluxu] (/multitms/sync-dexco-nfe) No records to save...`);
       console.info('\n');
-      await saveSyncJobs([
-        {
-          type: 'dexco',
-          error: null,
-          started_at: jobInitAt,
-          ended_at: new Date(),
-        },
-      ]);
+      await saveSyncJobs({
+        type: 'dexco-multitms-nfe',
+        error: null,
+        started_at: jobInitAt,
+        ended_at: new Date(),
+      });
       return;
     }
 
@@ -60,31 +57,27 @@ export const syncDexcoNfes = async () => {
 
     console.info('\n');
 
-    await saveSyncJobs([
-      {
-        type: 'dexco',
-        error: null,
-        started_at: jobInitAt,
-        ended_at: new Date(),
-      },
-    ]);
+    await saveSyncJobs({
+      type: 'dexco-multitms-nfe',
+      error: null,
+      started_at: jobInitAt,
+      ended_at: new Date(),
+    });
   } catch (error) {
     console.error(
       `[Fluxu] (/multitms/sync-dexco-nfe) Error syncing "${user.usuario}":`,
       error,
     );
-    await saveSyncJobs([
-      {
-        type: 'dexco',
-        error: new FluxuError({
-          status: 500,
-          message: `[Fluxu] (/multitms/sync-dexco-nfe) Error syncing "${user.usuario}":`,
-          error,
-        }),
-        started_at: jobInitAt,
-        ended_at: new Date(),
-      },
-    ]);
+    await saveSyncJobs({
+      type: 'dexco-multitms-nfe',
+      error: new FluxuError({
+        status: 500,
+        message: `[Fluxu] (/multitms/sync-dexco-nfe) Error syncing "${user.usuario}":`,
+        error,
+      }),
+      started_at: jobInitAt,
+      ended_at: new Date(),
+    });
   }
 
   console.info('[Fluxu] (/multitms/sync-dexco-nfe) Syncing finished.');

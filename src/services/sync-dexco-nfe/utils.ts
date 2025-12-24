@@ -8,12 +8,6 @@ import {
 import { dataParse } from '../../utils/dataParser';
 import { FluxuError } from '../../utils/error';
 import { apiBodyTemplateString } from './apiBodyTemplate';
-import { adminApolloClient } from '../../utils/apollo';
-import {
-  InsertNfesDocument,
-  InsertNfesMutationVariables,
-  InsertNfesMutation,
-} from '../../@types/generated/types';
 
 // ----------------------------------------------------------------------
 
@@ -130,7 +124,7 @@ export const fetchData = async ({
       timezoneId: 'America/Sao_Paulo',
     });
     const page = await context.newPage();
-    await context.route('**/*.{png,jpg,jpeg}', (route) => route.abort());
+    await context.route('**/*.{png,jpg,jpeg,svg}', (route) => route.abort());
 
     // navigate to login page
     await page.goto(user.url, { timeout: 30000 });
@@ -270,26 +264,28 @@ export const saveData = async ({
       new Map(_data.map((item) => [item.numero_nf, item])).values(),
     );
 
-    await adminApolloClient.mutate<
-      InsertNfesMutation,
-      InsertNfesMutationVariables
-    >({
-      mutation: InsertNfesDocument,
-      variables: {
-        data: data.map((item) => ({
-          numero_nf: item.numero_nf,
-          cnpj_remetente: item.cnpj_remetente,
-          cnpj_destinatario: item.cnpj_destinatario,
-          observacao: item.observacao,
-          endereco_destino: item.endereco_destino,
-          serie_nf: item.serie_nf,
-          data_nf: item.data_nf,
-          peso: item.peso,
-          valor_nf: item.valor_nf,
-          chave_nf: item.chave_nf,
-        })),
-      },
-    });
+    // await adminApolloClient.mutate<
+    //   InsertNfesMutation,
+    //   InsertNfesMutationVariables
+    // >({
+    //   mutation: InsertNfesDocument,
+    //   variables: {
+    //     data: data.map((item) => ({
+    //       numero_nf: item.numero_nf,
+    //       cnpj_remetente: item.cnpj_remetente,
+    //       cnpj_destinatario: item.cnpj_destinatario,
+    //       observacao: item.observacao,
+    //       endereco_destino: item.endereco_destino,
+    //       serie_nf: item.serie_nf,
+    //       data_nf: item.data_nf,
+    //       peso: item.peso,
+    //       valor_nf: item.valor_nf,
+    //       chave_nf: item.chave_nf,
+    //     })),
+    //   },
+    // });
+
+    //
 
     const rows = data
       .map((item, i) => {
