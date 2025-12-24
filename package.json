@@ -9,28 +9,32 @@
     "codegen": "graphql-codegen"
   },
   "dependencies": {
-    "@apollo/client": "^4.0.4",
-    "@playwright/browser-chromium": "^1.55.0",
+    "@apollo/client": "^4.0.11",
+    "@playwright/browser-chromium": "^1.57.0",
+    "cors": "^2.8.5",
     "date-fns": "^4.1.0",
-    "dotenv": "^17.2.2",
-    "graphql": "^16.11.0",
-    "mssql": "^12.0.0",
-    "playwright": "^1.55.0",
-    "zod": "^4.1.7"
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "graphql": "^16.12.0",
+    "helmet": "^8.1.0",
+    "mssql": "^12.2.0",
+    "playwright": "^1.57.0",
+    "zod": "^4.2.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.35.0",
-    "@graphql-codegen/cli": "^6.0.0",
-    "@graphql-codegen/typed-document-node": "^6.0.0",
-    "@graphql-codegen/typescript": "^5.0.0",
-    "@graphql-codegen/typescript-operations": "^5.0.0",
-    "@types/express": "^5.0.3",
+    "@eslint/js": "^9.39.2",
+    "@graphql-codegen/cli": "^6.1.0",
+    "@graphql-codegen/typed-document-node": "^6.1.5",
+    "@graphql-codegen/typescript": "^5.0.7",
+    "@graphql-codegen/typescript-operations": "^5.0.7",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
     "@types/mssql": "^9.1.8",
-    "@types/node": "^24.3.1",
-    "eslint": "^9.35.0",
-    "prettier": "^3.6.2",
+    "@types/node": "^25.0.3",
+    "eslint": "^9.39.2",
+    "prettier": "^3.7.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.9.2",
-    "typescript-eslint": "^8.43.0"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.50.1"
   }
 }

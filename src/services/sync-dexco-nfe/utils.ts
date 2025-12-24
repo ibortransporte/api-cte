@@ -307,10 +307,15 @@ export const saveData = async ({
           mssql.NVarChar,
           item.endereco_destino,
         );
+
         request.input(`${prefix}_serie_nf`, mssql.Int, item.serie_nf);
         request.input(`${prefix}_data_nf`, mssql.DateTime, item.data_nf);
-        request.input(`${prefix}_peso`, mssql.Decimal, item.peso);
-        request.input(`${prefix}_valor_nf`, mssql.Decimal, item.valor_nf);
+        request.input(`${prefix}_peso`, mssql.Decimal(18, 3), item.peso);
+        request.input(
+          `${prefix}_valor_nf`,
+          mssql.Decimal(18, 2),
+          item.valor_nf,
+        );
         request.input(`${prefix}_chave_nf`, mssql.NVarChar, item.chave_nf);
 
         return `

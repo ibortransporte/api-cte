@@ -9,6 +9,8 @@ const envs = z
   .object({
     NODE_ENV: z.enum(['production']),
     TZ: z.enum(['America/Sao_Paulo']),
+    PORT: z.coerce.number(),
+    ORIGIN: z.string().nonempty(),
     //
     HASURA_HTTPS: z.string().nonempty(),
     HASURA_ADMIN_SECRET: z.string().nonempty(),
